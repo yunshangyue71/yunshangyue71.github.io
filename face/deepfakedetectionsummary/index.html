@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>
+    
+    DeepfakeDetectionSummary - Dave Qi
+    </title>
+  
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+
+
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta name="color-scheme" content="light dark" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="generator" content="Hugo 0.152.2" />
+
+
+<link rel="canonical" href="https://yunshangyue71.github.io/face/deepfakedetectionsummary/" />
+
+
+
+
+<meta name="author" content="default" />
+<meta name="description" content="DeepFake Detection 手机上实时运行的验证技术 stage 1 face detection 红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入 需要支持倾斜角度， 并且做到端侧实时 2 face ldm 根据landmark、视线追踪，检测用户的反应是否正常 3 Passive Liveness Detection 静态活体检测， 分类任务 拉普拉斯方差： 判断图像清晰度 亮度均值、对比度阈值做过滤： 判断图片明亮度 遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断 DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有 2D FFT 分析 GAN 伪影 检查光照方向是否不合理 2d关键点检测人脸是不是正常人的轮廓弧度等 print attack： 纸张反光， 清晰度，颜色分布差异，等 replay attack ： 屏幕莫尔纹，清晰度 paper cut 4 Challenge-response 让用户做随机指令，将实时得到landmarks判断是否正常 比如眨眼、点头、微笑、说数字或跟随虚拟光标 跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系 因为是投影到2d图像上，所以是弱3d 5 face recognition 1:1 人脸比对 人脸比对，根据不同的场景设置不同的阈值 6 系统级别的 手机验证码、银行密码、已经储存的问题等， ip等 增强输入： 深度摄像头TOF 一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：
+" />
+
+
+
+
+
+
+
+
+
+<meta property="og:url" content="https://yunshangyue71.github.io/face/deepfakedetectionsummary/">
+  <meta property="og:site_name" content="Dave Qi">
+  <meta property="og:title" content="DeepfakeDetectionSummary">
+  <meta property="og:description" content="DeepFake Detection 手机上实时运行的验证技术 stage 1 face detection 红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入 需要支持倾斜角度， 并且做到端侧实时 2 face ldm 根据landmark、视线追踪，检测用户的反应是否正常 3 Passive Liveness Detection 静态活体检测， 分类任务 拉普拉斯方差： 判断图像清晰度 亮度均值、对比度阈值做过滤： 判断图片明亮度 遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断 DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有 2D FFT 分析 GAN 伪影 检查光照方向是否不合理 2d关键点检测人脸是不是正常人的轮廓弧度等 print attack： 纸张反光， 清晰度，颜色分布差异，等 replay attack ： 屏幕莫尔纹，清晰度 paper cut 4 Challenge-response 让用户做随机指令，将实时得到landmarks判断是否正常 比如眨眼、点头、微笑、说数字或跟随虚拟光标 跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系 因为是投影到2d图像上，所以是弱3d 5 face recognition 1:1 人脸比对 人脸比对，根据不同的场景设置不同的阈值 6 系统级别的 手机验证码、银行密码、已经储存的问题等， ip等 增强输入： 深度摄像头TOF 一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="face">
+    <meta property="article:published_time" content="2025-11-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-10T00:00:00+00:00">
+
+  <meta itemprop="name" content="DeepfakeDetectionSummary">
+  <meta itemprop="description" content="DeepFake Detection 手机上实时运行的验证技术 stage 1 face detection 红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入 需要支持倾斜角度， 并且做到端侧实时 2 face ldm 根据landmark、视线追踪，检测用户的反应是否正常 3 Passive Liveness Detection 静态活体检测， 分类任务 拉普拉斯方差： 判断图像清晰度 亮度均值、对比度阈值做过滤： 判断图片明亮度 遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断 DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有 2D FFT 分析 GAN 伪影 检查光照方向是否不合理 2d关键点检测人脸是不是正常人的轮廓弧度等 print attack： 纸张反光， 清晰度，颜色分布差异，等 replay attack ： 屏幕莫尔纹，清晰度 paper cut 4 Challenge-response 让用户做随机指令，将实时得到landmarks判断是否正常 比如眨眼、点头、微笑、说数字或跟随虚拟光标 跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系 因为是投影到2d图像上，所以是弱3d 5 face recognition 1:1 人脸比对 人脸比对，根据不同的场景设置不同的阈值 6 系统级别的 手机验证码、银行密码、已经储存的问题等， ip等 增强输入： 深度摄像头TOF 一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：">
+  <meta itemprop="datePublished" content="2025-11-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="556">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DeepfakeDetectionSummary">
+  <meta name="twitter:description" content="DeepFake Detection 手机上实时运行的验证技术 stage 1 face detection 红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入 需要支持倾斜角度， 并且做到端侧实时 2 face ldm 根据landmark、视线追踪，检测用户的反应是否正常 3 Passive Liveness Detection 静态活体检测， 分类任务 拉普拉斯方差： 判断图像清晰度 亮度均值、对比度阈值做过滤： 判断图片明亮度 遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断 DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有 2D FFT 分析 GAN 伪影 检查光照方向是否不合理 2d关键点检测人脸是不是正常人的轮廓弧度等 print attack： 纸张反光， 清晰度，颜色分布差异，等 replay attack ： 屏幕莫尔纹，清晰度 paper cut 4 Challenge-response 让用户做随机指令，将实时得到landmarks判断是否正常 比如眨眼、点头、微笑、说数字或跟随虚拟光标 跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系 因为是投影到2d图像上，所以是弱3d 5 face recognition 1:1 人脸比对 人脸比对，根据不同的场景设置不同的阈值 6 系统级别的 手机验证码、银行密码、已经储存的问题等， ip等 增强输入： 深度摄像头TOF 一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：">
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.min.a0ae63bb9404f735c1a2045deae9e97f06e10118e5ad7befa80df30c5cd7fabc.css" integrity="sha256-oK5ju5QE9zXBogRd6unpfwbhARjlrXvvqA3zDFzX&#43;rw=" media="screen"
+  crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
+
+
+</head>
+
+<body>
+  <div id="back-to-top"></div>
+
+  <header class="site-header">
+    
+<div class="desktop-header">
+  <div class="desktop-header-logo">
+    <a href="/" class="logo">
+      
+      Dave Qi
+      
+    </a>
+  </div>
+
+  <nav class="desktop-navbar">
+    <ul id="menu" class="menu">
+      
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/face/">Face</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/post/">post</a>
+        
+
+        
+
+      </li>
+      
+
+      
+      
+
+      
+
+      <li class="menu-item">
+        <a class="theme-toggle menu-item-link" href="javascript:void(0);">
+
+          
+<svg aria-hidden="true" class="lucide lucide-sun hi-svg-inline theme-icon-light" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+          
+<svg aria-hidden="true" class="lucide lucide-moon hi-svg-inline theme-icon-dark" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+          title="rss" target="_blank">
+          
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline icon--rss" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        </a>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+
+    
+
+<div class="mobile-header">
+  <div id="mobile-navbar" class="mobile-navbar">
+    <div id="mobile-navbar-icon" class="mobile-navbar-icon">
+      
+<svg aria-hidden="true" class="lucide lucide-menu hi-svg-inline icon--menu" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </div>
+    <div class="mobile-navbar-logo">
+      <a href="/" class="logo">Dave Qi</a>
+    </div>
+  </div>
+
+  <div id="mobile-menu-close-modal" class="mobile-menu-close-modal"></div>
+  <nav id="mobile-menu" class="mobile-menu">
+    <ul class="mobile-menu-list">
+      <li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/face/">Face</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/post/">post</a>
+        
+        
+      </li>
+      
+
+      
+
+      <li class="mobile-menu-item">
+        <a class="theme-toggle menu-item-link" href="javascript:void(0);">
+
+          
+<svg aria-hidden="true" class="lucide lucide-sun hi-svg-inline theme-icon-light" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+          
+<svg aria-hidden="true" class="lucide lucide-moon hi-svg-inline theme-icon-dark" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+        </a>
+      </li>
+
+      <li class="mobile-menu-item">
+        <a class="menu-item-link" href="https://yunshangyue71.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+          title="rss" target="_blank">
+          
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline icon--rss" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        </a>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+
+  </header>
+
+  
+
+  
+
+
+
+  <main id="main" class="main pico container">
+    <div class="content-wrapper" style="display:flex; width:100%; margin:0; padding:0; box-sizing:border-box; gap:0;">
+
+  
+  <aside class="left-sidebar" style="flex:0 0 15%; padding:0; margin:0; box-sizing:border-box;">
+    <div style="padding:0; margin:0;">
+      
+<nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#deepfake-detection">DeepFake Detection</a>
+      <ul>
+        <li><a href="#手机上实时运行的验证技术">手机上实时运行的验证技术</a></li>
+        <li><a href="#增强输入-深度摄像头tof">增强输入： 深度摄像头TOF</a></li>
+        <li><a href="#深度伪造检测模型">深度伪造检测模型</a>
+          <ul>
+            <li><a href="#img">img</a></li>
+            <li><a href="#video">video</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#face-detection">Face Detection</a>
+      <ul>
+        <li><a href="#papers">papers</a></li>
+        <li><a href="#compare-latency">compare latency</a></li>
+        <li><a href="#summary">Summary</a>
+          <ul>
+            <li><a href="#for-tiny-objects">for tiny objects</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#face-landmark-detection">Face Landmark Detection</a></li>
+    <li><a href="#face-rec-loss">Face rec loss</a>
+      <ul>
+        <li><a href="#backbone">backbone</a>
+          <ul>
+            <li><a href="#交叉熵损失">交叉熵损失</a></li>
+            <li><a href="#triplet-三元组损失">Triplet 三元组损失</a></li>
+            <li><a href="#l-softmax">L-softmax</a></li>
+            <li><a href="#a-softmaxsphereface">A-softmax（SphereFace）</a></li>
+            <li><a href="#centerloss">CenterLoss</a></li>
+            <li><a href="#cosfaceam-softmax">CosFace/AM-softmax</a></li>
+            <li><a href="#arcface">ArcFace</a></li>
+            <li><a href="#focal-loss">focal loss</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3dmm-3d-morphable-model-deca">3DMM (3D Morphable Model) DECA</a>
+      <ul>
+        <li><a href="#几个先验知识">几个先验知识</a>
+          <ul>
+            <li><a href="#albedo">albedo</a></li>
+            <li><a href="#光照模型-lambert定律">光照模型 Lambert定律</a></li>
+            <li><a href="#albedo-经过光照">albedo 经过光照</a></li>
+            <li><a href="#纹理贴图">纹理贴图</a></li>
+          </ul>
+        </li>
+        <li><a href="#pipeline">pipeline</a></li>
+        <li><a href="#loss">Loss</a>
+          <ul>
+            <li><a href="#beta-连续性">beta 连续性</a></li>
+            <li><a href="#正则项损失">正则项损失</a></li>
+            <li><a href="#detail">detail</a></li>
+            <li><a href="#detail-loss">detail loss</a></li>
+          </ul>
+        </li>
+        <li><a href="#像素级别损失">像素级别损失</a>
+          <ul>
+            <li><a href="#id-mrf-loss">ID-MRF loss</a></li>
+            <li><a href="#sym">sym</a></li>
+            <li><a href="#detail-regularization">Detail regularization</a></li>
+            <li><a href="#detail-disentanglement">Detail disentanglement</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#face-datasets">Face Datasets</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+    </div>
+  </aside>
+
+  
+  <div id="content" class="content"
+       style="flex:1; width:85%; max-width:85%; margin:0; padding:0; box-sizing:border-box;">
+
+    <article class="post" style="width:100%; max-width:100%; margin:0; padding:0;">
+
+      
+      <header class="post-header" style="margin:0; padding:0;">
+        <h1 class="post-title">DeepfakeDetectionSummary</h1>
+        
+
+
+
+        <div class="post-meta-list">
+  <div class="post-meta-item post-meta-author">
+    
+<svg aria-hidden="true" class="lucide lucide-user-round-pen hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M2 21a8 8 0 0 1 10.821-7.487"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="8" r="5"/></svg>
+    default
+    
+  </div>
+
+  <div class="post-meta-item post-meta-time">
+    
+<svg aria-hidden="true" class="lucide lucide-calendar-days hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+    <time datetime=" 2025-11-10">
+      2025-11-10
+    </time>
+
+
+    
+
+  </div>
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+      </header>
+
+      
+      <div class="post-content" style="width:100%; max-width:100%; margin:0; padding:0; box-sizing:border-box;">
+        <h2 id="deepfake-detection">DeepFake Detection</h2>
+<h3 id="手机上实时运行的验证技术">手机上实时运行的验证技术</h3>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>stage</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>face detection</td>
+          <td>红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>需要支持倾斜角度， 并且做到端侧实时</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>face ldm</td>
+          <td>根据landmark、视线追踪，检测用户的反应是否正常</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Passive Liveness Detection</td>
+          <td>静态活体检测， 分类任务</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>拉普拉斯方差： 判断图像清晰度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>亮度均值、对比度阈值做过滤： 判断图片明亮度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>2D FFT 分析 GAN 伪影</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>检查光照方向是否不合理</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>2d关键点检测人脸是不是正常人的轮廓弧度等</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>print attack： 纸张反光， 清晰度，颜色分布差异，等</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>replay attack ： 屏幕莫尔纹，清晰度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>paper cut</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Challenge-response</td>
+          <td>让用户做随机指令，将实时得到landmarks判断是否正常</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>比如眨眼、点头、微笑、说数字或跟随虚拟光标</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>因为是投影到2d图像上，所以是弱3d</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>face recognition</td>
+          <td>1:1 人脸比对</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>人脸比对，根据不同的场景设置不同的阈值</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>系统级别的</td>
+          <td>手机验证码、银行密码、已经储存的问题等， ip等</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="增强输入-深度摄像头tof">增强输入： 深度摄像头TOF</h3>
+<p>一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：</p>
+<ol>
+<li>创建用户的3d morphble model， 记录shape 参数</li>
+<li>人脸验证的时候也要比对3d 模型的</li>
+<li>录屏、打印等2d 的攻击可以杜绝，
+<ol>
+<li>可以将检测到的2d关键点投影到3d 深度图中获取准确的3d坐标，来判断是否是2d图片</li>
+<li>如果可以增加算力，比如本地部署，就可以通过3d 点云回归关键点</li>
+</ol>
+</li>
+</ol>
+<h3 id="深度伪造检测模型">深度伪造检测模型</h3>
+<h4 id="img">img</h4>
+<p>专门训练 DeepFake 检测模型<br>
+数据集：FaceForensics++、Celeb-DF、DFDC<br>
+模型关注 时空一致性、光照、频域特征</p>
+<h4 id="video">video</h4>
+<p>微表情分析：捕捉自然、短暂的面部肌肉变化
+连续帧变化</p>
+<h2 id="face-detection">Face Detection</h2>
+<h3 id="papers">papers</h3>
+<p>La: latency</p>
+<ul>
+<li>H: high latency</li>
+<li>L: low latency</li>
+<li>-:  according to backbone
+L: with or not landmark</li>
+<li>Y: with</li>
+<li>N: not
+<table>
+  <thead>
+      <tr>
+          <th>Date</th>
+          <th>model</th>
+          <th>La</th>
+          <th>L</th>
+          <th>compare</th>
+          <th>paper</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2016</td>
+          <td>MTCNN</td>
+          <td>H*</td>
+          <td>Y</td>
+          <td>image pyramid</td>
+          <td><a href="https://arxiv.org/pdf/1604.02878">MTCNN</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>P: light weight, N candidates</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>R: refine，其实是选择， N 中选 M(M&lt;N)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>O: N faces refine and output</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>如果按照img pyramid 速度肯定慢，否则效果会差一些</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2016</td>
+          <td>SSDface</td>
+          <td>H</td>
+          <td>N</td>
+          <td>ssd model</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2017</td>
+          <td>tiny face</td>
+          <td>H</td>
+          <td>N</td>
+          <td>image pyramid &ndash;&gt;merge detection</td>
+          <td><a href="https://arxiv.org/pdf/1612.04402">Finding Tiny Faces</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>each pyramid have fixed resolution faces</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>耗时较多，后世多用于TTA</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2017</td>
+          <td>S3FD</td>
+          <td>-</td>
+          <td>N</td>
+          <td>feature pyramid</td>
+          <td><a href="https://arxiv.org/pdf/1708.05237">S3FD</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>紧凑人脸，外周信息重要性降低</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>anchor 正方形， 可以被各个stage整除</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2018</td>
+          <td>DSFD</td>
+          <td>H</td>
+          <td>N</td>
+          <td>当前层和下一层融合，有点FPN的味道了</td>
+          <td><a href="https://arxiv.org/pdf/1810.10220">DSFD</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>损失根据TF和TP来决定损失（后续被focal loss 替代）</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>double shot mean 耗时高</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2018</td>
+          <td>pyramidbox</td>
+          <td>H</td>
+          <td>N</td>
+          <td>body+head+face detection 解决小目标</td>
+          <td><a href="https://arxiv.org/pdf/1803.07737">pyramidbox</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>CPM 大的感受野来感知周围的相关信息</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Pyramid Anchors</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2018</td>
+          <td>FaceBoxes</td>
+          <td>L</td>
+          <td>N</td>
+          <td>用Inception 来增大感受野</td>
+          <td><a href="https://arxiv.org/pdf/1708.05234">FaceBoxes</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>backbone 用stride减少计算量</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>libface</td>
+          <td>L</td>
+          <td>Y</td>
+          <td>于仕琪老师提出的libfacedetection，</td>
+          <td><a href="https://github.com/ShiqiYu/libfacedetection">https://github.com/ShiqiYu/libfacedetection</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>有点类似demo，效果需要评估</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2019</td>
+          <td>ultraface</td>
+          <td>L</td>
+          <td>N</td>
+          <td></td>
+          <td>Ultra-Light-Fast-Generic-Face-Detector-1MB</td>
+      </tr>
+      <tr>
+          <td>2019</td>
+          <td>LFFD</td>
+          <td>L</td>
+          <td>N</td>
+          <td>low level ： small face many context</td>
+          <td><a href="https://arxiv.org/pdf/1904.10633">LFFD</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>high level: big face little context</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2019</td>
+          <td>CenterFace</td>
+          <td>L</td>
+          <td>Y</td>
+          <td>anchor free, predict center and w h</td>
+          <td><a href="https://arxiv.org/pdf/1911.03599">CenterFace</a></td>
+      </tr>
+      <tr>
+          <td>2020</td>
+          <td>DBFace</td>
+          <td>L</td>
+          <td>Y</td>
+          <td>深兰设计的</td>
+          <td><a href="https://github.com/dlunion/DBFace">https://github.com/dlunion/DBFace</a></td>
+      </tr>
+      <tr>
+          <td>2019</td>
+          <td>RetinaFace</td>
+          <td>L</td>
+          <td>Y</td>
+          <td>训练中添加了3dmesh的监督信息</td>
+          <td><a href="https://arxiv.org/pdf/1905.00641">RetinaFace</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>这个是关键在自己其他项目中有佐证</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>yolov5face</td>
+          <td></td>
+          <td></td>
+          <td>原始yolo做不到实时，需要模型轻量化</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>根据最近的检测效果来看，yolo的检测效果已经相当不错了</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+<h3 id="compare-latency">compare latency</h3>
+<table>
+  <thead>
+      <tr>
+          <th>test img</th>
+          <th>latency</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><img src="3.jpg" width="450" ></td>
+          <td><img src="4.png" width="850"></td>
+      </tr>
+      <tr>
+          <td><img src="5.jpg" width="450" ></td>
+          <td><img src="6.png" width="850"></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="summary">Summary</h3>
+<h4 id="for-tiny-objects">for tiny objects</h4>
+<ol>
+<li>image pyramid
+deprecated,  耗时多</li>
+<li></li>
+<li>multi faces
+retinaface
+libface</li>
+<li>little faces
+retinafacelffdface</li>
+</ol>
+<h2 id="face-landmark-detection">Face Landmark Detection</h2>
+<p>这里分为两个思路，1 heatmaps直接回归具体的位置，2heatmaps回归概率分布类似nanodet回归坐标一样</p>
+<h2 id="face-rec-loss">Face rec loss</h2>
+<h3 id="backbone">backbone</h3>
+<img src='face_recgnition_loss_backbone.png' width=400>
+<h4 id="交叉熵损失">交叉熵损失</h4>
+<img src='face_recgnition_loss6.png' width=800>
+<img src='face_recgnition_loss0.png' width=400>
+<h4 id="triplet-三元组损失">Triplet 三元组损失</h4>
+<img src='face_recgnition_loss5.png' width=500>
+<img src='face_recgnition_loss1.png'>
+<p>相同的两个人近，不相同的两个人远</p>
+<h4 id="l-softmax">L-softmax</h4>
+<p>出发点如下增大类间距离
+<img src='face_recgnition_loss4.png' width=600></p>
+<p>Wyi 就是onehot的表示形式
+<img src='face_recgnition_loss7.png' width=600></p>
+<h4 id="a-softmaxsphereface">A-softmax（SphereFace）</h4>
+<p>相比L-softmax，归一化了 Wj</p>
+<h4 id="centerloss">CenterLoss</h4>
+<img src='face_recgnition_loss3.png'  width=350>
+<img src='face_recgnition_loss2.png' width=400>
+<h4 id="cosfaceam-softmax">CosFace/AM-softmax</h4>
+<p>把乘性margin改成了加性margin</p>
+<h4 id="arcface">ArcFace</h4>
+<p>是直接在角度空间 中最大化分类界限，而CosFace是在余弦空间
+中最大化分类界限</p>
+<h5 id="arcface-具体做法">arcface 具体做法</h5>
+<p>输入 3.8M图片，每个人几十张， 一共85164个人，也就是这么多个类别
+img 经过backbone 得到 512的特征向量 feature</p>
+<p>feature -&gt; normalize -&gt; ArcModel(fc [512, 85164]) -&gt; 得到cosine -&gt; 再得到sine值 -&gt; cc-ss来增加delta 得到phi -&gt; onehot label 是phi，非label cos</p>
+<h4 id="focal-loss">focal loss</h4>
+<img src='face_recgnition_loss_focal-loss.png' width=600>
+<h2 id="3dmm-3d-morphable-model-deca">3DMM (3D Morphable Model) DECA</h2>
+<h3 id="几个先验知识">几个先验知识</h3>
+<h4 id="albedo">albedo</h4>
+<img src="albedo.jpg" width=200/>
+<h4 id="光照模型-lambert定律">光照模型 Lambert定律</h4>
+<p>(1)反射强度与观察者的角度没有关系；
+(2)反射强度与光线的入射角度有关系
+<img src="Lambert.jpg" width=400/></p>
+<p>cosθ = dot(N,L)
+DiffuseLight = I<em>dot(N,L)
+DiffuseLight = Kd</em>I*dot(N,L)</p>
+<p>L为入射光线的反向量
+N为当前表面的法向量方向
+I为入射光的强度
+物体对光线的反射系数为Kd</p>
+<h4 id="albedo-经过光照">albedo 经过光照</h4>
+<img src="guang.jpg" width=400>
+<h4 id="纹理贴图">纹理贴图</h4>
+<img src="tietu.jpg" width=200>
+<p>将光照贴到上面去， R 就是渲染函数</p>
+<h3 id="pipeline">pipeline</h3>
+<img src="pipeline.jpg" width=600>
+先训练coarse
+<h3 id="loss">Loss</h3>
+<table>
+  <thead>
+      <tr>
+          <th>loss type</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Coarse reconstruction</td>
+          <td><img src="loss1.jpg" width=400></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2d landmark loss</td>
+          <td><img src="loss2.jpg" width=400></td>
+          <td>相机模型：正交投影。 s，t： 缩放、位移</td>
+      </tr>
+      <tr>
+          <td>eye closure loss</td>
+          <td><img src="loss3.jpg" width=400></td>
+          <td>： 眼睛闭合程度损失上下眼睑的距离和真实上下眼睑的距离的损失</td>
+      </tr>
+      <tr>
+          <td>像素级别损失</td>
+          <td><img src="loss4.jpg" width=300></td>
+          <td>面部分割后进行</td>
+      </tr>
+      <tr>
+          <td>Identity loss</td>
+          <td><img src="loss5.jpg" width=500></td>
+          <td>这个是余弦距离损失</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="beta-连续性">beta 连续性</h4>
+<img src="loss6.jpg" width=600>
+<p>相同人的shape理论上是一样的，所以不同照片相同人可以直接替换，
+但是实际上shape会有细小的差别， 这个差别，希望不要引起跳变，所以添加上替换 shape参数的损失</p>
+<h4 id="正则项损失">正则项损失</h4>
+<img src="loss7.jpg" width=600>
+<h4 id="detail">detail</h4>
+<p>训练编码器 （具有与 相同的架构)对图像 进行编码到128维潜latent code ,表示受试者特定的细节。latent code 与FLAME的expression 和jaw姿势参数
+一起并由解码 到 .
+<img src="detail1.jpg" width=400></p>
+<p>将粗糙重建的M和其表面法向数据N转换到UV空间，并结合D(Displacement Map)数据生成更精细的geometry M&rsquo;
+<img src="detail2.jpg" width=400></p>
+<p>从精细geometry M&rsquo;,中获取精细的法向数据 N&rsquo;,将其和原始的geometry M, 一起渲染得到精细图像
+<img src="detail4.jpg" width=400></p>
+<h4 id="detail-loss">detail loss</h4>
+<img src="loss8.jpg" width=500>
+<h3 id="像素级别损失">像素级别损失</h3>
+<p>面部分割后进行
+<img src="loss9.jpg" width=150></p>
+<h4 id="id-mrf-loss">ID-MRF loss</h4>
+<p>面部分割后进行
+采用隐式多样化马尔可夫随机场（ID-MRF）损失来重建几何细节。给定输入图像和细节渲染，ID-MRF损失从预训练网络的不同层提取特征块，然后最小化来自两个图像的对应最近邻特征块之间的差异。不幸的是，这可能会导致对抗性训练过程不稳定。但是，ID-MRF损失将生成的内容正则化为本地补丁级别的原始输入；这鼓励DECA捕捉高频细节。</p>
+<img src="loss10.jpg" width=500>
+<h4 id="sym">sym</h4>
+<p>不可见面部部分对称性
+<img src="loss11.jpg" width=500></p>
+<h4 id="detail-regularization">Detail regularization</h4>
+<img src="loss12.jpg" width=150>
+<h4 id="detail-disentanglement">Detail disentanglement</h4>
+<p>相同的人的细节是一样的， 皱纹、痣等，
+所以相同人的不同细节替换后应该一样
+<img src="loss13.jpg" width=550></p>
+<h2 id="face-datasets">Face Datasets</h2>
+<p>1.PubFig: Public Figures Face Database(哥伦比亚大学公众人物脸部数据库)
+这是哥伦比亚大学的公众人物脸部数据集，包含有200个人的58k+人脸图像，主要用于非限制场景下的人脸识别。</p>
+<p>2.Large-scale CelebFaces Attributes (CelebA) Dataset
+这是由香港中文大学汤晓鸥教授实验室公布的大型人脸识别数据集。该数据集包含有200K张人脸图片，人脸属性有40多种，主要用于人脸属性的识别。</p>
+<p>3.Colorferet
+为促进人脸识别算法的研究和实用化，美国国防部的Counterdrug Technology Transfer Program(CTTP)发起了一个人脸识别技术(Face Recognition Technology 简称FERET)工程，它包括了一个通用人脸库以及通用测试标准。到1997年，它已经包含了1000多人的10000多张照片，每个人包括了不同表情，光照，姿态和年龄的照片。</p>
+<p>4.Multi-Task Facial Landmark (MTFL) dataset
+该数据集包含了将近13000张人脸图片，均采自网络。</p>
+<p>5.BioID Face Database - FaceDB
+这个数据集包含了1521幅分辨率为384x286像素的灰度图像。 每一幅图像来自于23个不同的测试人员的正面角度的人脸。为了便于做比较，这个数据集也包含了对人脸图像对应的手工标注的人眼位置文件。 图像以 &ldquo;BioID_xxxx.pgm&quot;的格式命名，其中xxxx代表当前图像的索引(从0开始)。类似的，形如&quot;BioID_xxxx.eye&quot;的文件包含了对应图像中眼睛的位置。</p>
+<p>6.Labeled Faces in the Wild Home (LFW)
+LFW数据集是为了研究非限制环境下的人脸识别问题而建立的。这个数据集包含超过13，000张人脸图像，均采集于Internet。
+每个人脸均被标准了一个人名。其中，大约1680个人包含两个以上的人脸。
+这个集合被广泛应用于评价Face Verification算法的性能。</p>
+<p>7.Person identification in TV series
+该数据集所选用的人脸照片均来自于两部比较知名的电视剧，《吸血鬼猎人巴菲》和《生活大爆炸》。</p>
+<p>8.CMUVASC &amp; PIE Face dataset
+CMU PIE人脸库建立于2000年11月，它包括来自68个人的40000张照片，其中包括了每个人的13种姿态条件，43种光照条件和4种表情下的照片，现有的多姿态人脸识别的文献基本上都是在CMU PIE人脸库上测试的。</p>
+<p>9.YouTube Faces
+YouTube Video Faces是用来做人脸验证的。在这个数据集下，算法需要判断两段视频里面是不是同一个人。有不少在照片上有效的方法，在视频上未必有效/高效。</p>
+<p>10.CASIA-FaceV5
+该数据集包含了来自500个人的2500张亚洲人脸图片.</p>
+<p>11.The CNBC Face Database
+该数据集采集了200个人在不同状态下（不同的神情，装扮，发型等）的人脸照片。</p>
+<p>12.CASIA-3D FaceV1
+该数据集包含了来自123个人的4624张人脸图片，所有图片均由下图的仪器进行拍摄。</p>
+<p>13.IMDB-WIKI
+IMDB-WIKI人脸数据库是有IMDB数据库和Wikipedia数据库组成，其中IMDB人脸数据库包含了460,723张人脸图片，而Wikipedia人脸数据库包含了62,328张人脸数据库，总共523,051张人脸数据库，IMDB-WIKI人脸数据库中的每张图片都被标注了人的年龄和性别，对于年龄识别和性别识别的研究有着重要的意义。</p>
+<p>14.FDDB
+FDDB是UMass的数据集，被用来做人脸检测(Face Detection)。这个数据集比较大，比较有挑战性。而且作者提供了程序用来评估检测结果，所以在这个数据上面比较算法也相对公平。</p>
+<p>15.Caltech人脸数据库
+10k+人脸，提供双眼和嘴巴的坐标位置</p>
+<p>16.The Japanese Female Facial Expression (JAFFE) Database
+该数据库是由10位日本女性在实验环境下根据指示做出各种表情，再由照相机拍摄获取的人脸表情图像。整个数据库一共有213张图像，10个人，全部都是女性，每个人做出7种表情，这7种表情分别是： sad, happy, angry, disgust, surprise, fear, neutral. 每个人为一组，每一组都含有7种表情，每种表情大概有3,4张样图。</p>
+
+      </div>
+
+      
+      
+
+
+      
+      
+
+      
+      <footer class="post-footer" style="width:100%; margin:0; padding:0;">
+        
+      </footer>
+
+    </article>
+
+    
+    
+
+    
+    
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
+  </div>
+
+</div>
+  </main>
+
+  <footer id="footer" class="site-footer">
+    <div class="social-icon-links">
+  
+
+
+
+
+<a href="https://yunshangyue71.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="social-icon-link" title="rss"
+  target="_blank">
+  
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+</a>
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+     -
+    2025
+    <span class="heart">
+      
+      <i class="iconfont">
+        
+<svg aria-hidden="true" class="lucide lucide-heart hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </i>
+    </span><span class="author">
+      Dave Qi
+      
+    </span></span>
+
+  
+  
+
+  
+</div>
+
+  </footer>
+
+  
+
+
+
+
+<script type="text/javascript" src="/js/main.deccf41a28c9df338cee55686d7efe110184a817f40b32c263ff28866a9da0b9.js" integrity="sha256-3sz0GijJ3zOM7lVobX7&#43;EQGEqBf0CzLCY/8ohmqdoLk=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

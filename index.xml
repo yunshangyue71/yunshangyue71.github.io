@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dave Qi</title>
+    <link>https://yunshangyue71.github.io/</link>
+    <description>Recent content on Dave Qi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://yunshangyue71.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>3DMM-FLAME</title>
+      <link>https://yunshangyue71.github.io/face/3dmm-flame/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://yunshangyue71.github.io/face/3dmm-flame/</guid>
+      
+        <description>&lt;p&gt;FLAME coefficients:
+shape (identity) coefficient shape = (300,)
+expression coefficient shape       = (100,)
+pose coefficient shape             = (15,)&lt;/p&gt;
+&lt;p&gt;FLAME model components:
+shape (identity) component shape = (5023, 3, 300)
+expression component shape       = (5023, 3, 100)
+pose corrective blendshape shape = (5023, 3, 36)
+verts： 5023
+meshes： 9976&lt;/p&gt;
+&lt;h1 id=&#34;pose&#34;&gt;pose&lt;/h1&gt;
+&lt;p&gt;pose 𝜽 ∈ R3𝑘+3 (with 𝑘 = 4， joints for neck, jaw, and eyeballs)&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;pose id&lt;/th&gt;
+          &lt;th&gt;-0.2&lt;/th&gt;
+          &lt;th&gt;0&lt;/th&gt;
+          &lt;th&gt;0.2&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 0&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_0_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_0_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_0_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;下脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 1&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_1_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_1_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_1_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;下脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 2&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_2_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_2_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_2_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;下脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 3&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_3_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_3_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_3_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;上脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 4&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_4_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_4_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_4_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;上脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 5&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_5_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_5_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_5_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;上脖子&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 6&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_6_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_6_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_6_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;下嘴唇上下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 7&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_7_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_7_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_7_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;下嘴唇左右&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 8&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_8_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_8_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_8_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 9&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_9_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_9_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_9_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 10&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_10_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_10_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_10_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 11&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_11_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_11_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_11_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 12&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_12_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_12_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_12_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 13&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_13_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_13_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_13_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;pose 14&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_14_-0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_14_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;pose_14_0.2.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;shape&#34;&gt;shape&lt;/h1&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;beta id&lt;/th&gt;
+          &lt;th&gt;-5&lt;/th&gt;
+          &lt;th&gt;0&lt;/th&gt;
+          &lt;th&gt;5&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 0&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_0_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_0_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_0_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 1&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_1_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_1_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_1_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 2&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_2_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_2_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_2_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 3&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_3_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_3_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_3_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 4&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_4_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_4_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_4_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 5&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_5_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_5_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_5_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 6&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_6_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_6_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_6_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 7&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_7_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_7_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_7_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 8&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_8_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_8_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_8_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 9&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_9_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_9_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_9_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 10&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_10_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_10_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_10_5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&amp;hellip;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;expression&#34;&gt;expression&lt;/h1&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 300&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_300_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_300_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_300_5.jpg&#39;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 301&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_301_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_301_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_301_5.jpg&#39;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;beta 302&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_302_-5.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_302_0.jpg&#39;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&#39;beta_302_5.jpg&#39;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&amp;hellip;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>DeepfakeDetectionSummary</title>
+      <link>https://yunshangyue71.github.io/face/deepfakedetectionsummary/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://yunshangyue71.github.io/face/deepfakedetectionsummary/</guid>
+      
+        <description>&lt;h2 id=&#34;deepfake-detection&#34;&gt;DeepFake Detection&lt;/h2&gt;
+&lt;h3 id=&#34;手机上实时运行的验证技术&#34;&gt;手机上实时运行的验证技术&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;stage&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;face detection&lt;/td&gt;
+          &lt;td&gt;红外深度热成像一般都会有rgb摄像头，所以检测都用 rgb作为输入&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;需要支持倾斜角度， 并且做到端侧实时&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;face ldm&lt;/td&gt;
+          &lt;td&gt;根据landmark、视线追踪，检测用户的反应是否正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;Passive Liveness Detection&lt;/td&gt;
+          &lt;td&gt;静态活体检测， 分类任务&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;拉普拉斯方差： 判断图像清晰度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;亮度均值、对比度阈值做过滤： 判断图片明亮度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;遮挡(戴口罩、手挡脸、头发遮挡 导致特征丢失）： 关键点可见度 判断&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;DoG / Laplacian 取图像高频成份，看是否“过于光滑”或“奇怪的噪声” ，GAN常有&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;2D FFT 分析 GAN 伪影&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;检查光照方向是否不合理&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;2d关键点检测人脸是不是正常人的轮廓弧度等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;print attack： 纸张反光， 清晰度，颜色分布差异，等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;replay attack ： 屏幕莫尔纹，清晰度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;paper cut&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Challenge-response&lt;/td&gt;
+          &lt;td&gt;让用户做随机指令，将实时得到landmarks判断是否正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;比如眨眼、点头、微笑、说数字或跟随虚拟光标&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;跟随指令检测到的关键点尺寸等数据满不满足3D空间的关系&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;因为是投影到2d图像上，所以是弱3d&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;face recognition&lt;/td&gt;
+          &lt;td&gt;1:1 人脸比对&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;人脸比对，根据不同的场景设置不同的阈值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6&lt;/td&gt;
+          &lt;td&gt;系统级别的&lt;/td&gt;
+          &lt;td&gt;手机验证码、银行密码、已经储存的问题等， ip等&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;增强输入-深度摄像头tof&#34;&gt;增强输入： 深度摄像头TOF&lt;/h3&gt;
+&lt;p&gt;一般TOF 会有RGB camera， 所以在上述的基础上可以添加如下：&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
